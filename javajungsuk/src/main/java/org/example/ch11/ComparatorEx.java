@@ -17,7 +17,7 @@ public class ComparatorEx {
         System.out.println("strArr=" + Arrays.toString(strArr));    // strArr=[cat, Dog, lion, tiger]
 
         Arrays.sort(strArr, new Descending());  // 역순 정렬
-        System.out.println("strArr=" + Arrays.toString(strArr));    // strArr=[Dog, cat, lion, tiger]
+        System.out.println("strArr=" + Arrays.toString(strArr));    // strArr=[tiger, lion, cat, Dog]
     }
 }
 
