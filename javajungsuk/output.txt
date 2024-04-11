@@ -1,6 +1,0 @@
-#Properties Example
-#Thu Apr 11 08:21:02 KST 2024
-capacity=10
-size=10
-timeout=30
-language=ko
