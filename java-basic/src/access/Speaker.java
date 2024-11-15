@@ -1,7 +1,8 @@
 package access;
 
 public class Speaker {
-    int volume;
+    private int volume;
+    // private 가 되어있어 Speaker 객체 안에서는 사용할 수 있다.
 
     Speaker(int volume) {
         this.volume = volume;
