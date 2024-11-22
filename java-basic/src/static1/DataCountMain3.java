@@ -16,5 +16,14 @@ public class DataCountMain3 {
 
         Data3 data3 = new Data3("c");
         System.out.println("c.count = " + Data3.count);
+
+        // 추가
+        // 인스턴스를 통한 접근
+        Data3 data4 = new Data3("D");
+        System.out.println("data4.count = " + data4.count); // 실제로는 인스턴스에 있는 데이터를 쓰는게 아니다.(권장하지 않음)
+
+        // 클래스를 통한 접근
+        System.out.println("Data3.count = " + Data3.count);
+
     }
 }
