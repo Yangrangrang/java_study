@@ -8,7 +8,8 @@ public class MainV4 {
 
     public static void main(String[] args) {
 
-        NetworkServiceV4 serviceV0 = new NetworkServiceV4();
+//        NetworkServiceV4 serviceV0 = new NetworkServiceV4();
+        NetworkServiceV5 serviceV0 = new NetworkServiceV5();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
