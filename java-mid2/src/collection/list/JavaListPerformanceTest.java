@@ -29,7 +29,7 @@ public class JavaListPerformanceTest {
         addFirst(new LinkedList<>(), size);
         addMid(new LinkedList<>(), size);
         LinkedList<Integer> linkedList = new LinkedList<>();
-        addLast(linkedList, size);    
+        addLast(linkedList, size);
 
         System.out.println("==LinkedList 조회==");
         getIndex(linkedList, loop, 0);
