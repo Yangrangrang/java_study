@@ -1,4 +1,4 @@
-package id.start;
+package io.start;
 
 import java.io.IOException;
 import java.io.PrintStream;

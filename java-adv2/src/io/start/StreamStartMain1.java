@@ -1,10 +1,10 @@
-package id.start;
+package io.start;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class StreamStartMain2 {
+public class StreamStartMain1 {
 
     public static void main(String[] args) throws IOException {
         FileOutputStream fos = new FileOutputStream("temp/hello.dat");
@@ -14,10 +14,10 @@ public class StreamStartMain2 {
         fos.close();
 
         FileInputStream fis = new FileInputStream("temp/hello.dat");
-        int data;
-        while ((data = fis.read()) != -1) {
-            System.out.println(data);
-        }
+        System.out.println(fis.read());
+        System.out.println(fis.read());
+        System.out.println(fis.read());
+        System.out.println(fis.read());
         fis.close();
     }
 }
