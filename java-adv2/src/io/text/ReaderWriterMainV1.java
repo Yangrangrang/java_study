@@ -31,7 +31,7 @@ public class ReaderWriterMainV1 {
 
         // byte -> String UTF-8 디코딩
         String readString = new String(readBytes, UTF_8);
-        
+
         System.out.println("readBytes = " + Arrays.toString(readBytes));
         System.out.println("readString = " + readString);
     }
