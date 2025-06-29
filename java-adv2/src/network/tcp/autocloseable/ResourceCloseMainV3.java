@@ -1,6 +1,6 @@
 package network.tcp.autocloseable;
 
-public class ResourceCloseMainV2 {
+public class ResourceCloseMainV3 {
 
     public static void main(String[] args) {
         try {
@@ -29,10 +29,19 @@ public class ResourceCloseMainV2 {
             throw e;
         } finally {
             if (resource2 != null) {
-                resource2.closeEx();    // CloseException 발생
+                try {
+                    resource2.closeEx();    // CloseException 발생
+                } catch (CloseException e) {
+                    // close() 에서 발생한 예외는 버린다. 필요하면 로깅 정도
+                    System.out.println("closeEx: " + e);
+                }
             }
             if (resource1 != null) {
-                resource1.closeEx();    // 이 코드 호출 안됨!
+                try {
+                    resource1.closeEx();    // 이 코드 호출 안됨!
+                } catch (CloseException e) {
+                    System.out.println("closeEx: " + e);
+                }
             }
         }
 
