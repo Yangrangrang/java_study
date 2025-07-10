@@ -16,7 +16,7 @@ public class SessionManagerV6 {
         sessions.remove(session);
     }
 
-    public synchronized closeAll() {
+    public synchronized void closeAll() {
         for (SessionV6 session : sessions) {
             session.close();
         }
