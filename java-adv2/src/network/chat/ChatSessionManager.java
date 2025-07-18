@@ -21,4 +21,19 @@ public class ChatSessionManager {
         }
         sessions.clear();
     }
+
+    public synchronized List<String> getSessions() {
+        ArrayList<String> list = new ArrayList<>();
+        for (ChatSession session : sessions) {
+            String name = session.getName();
+            list.add(name);
+        }
+        return list;
+    }
+
+    public synchronized void broadcast(String msg) {
+        for (ChatSession session : sessions) {
+            session.send(msg);
+        }
+    }
 }

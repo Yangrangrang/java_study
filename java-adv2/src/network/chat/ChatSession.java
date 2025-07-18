@@ -6,6 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 
 import static util.MyLogger.log;
 
@@ -18,13 +19,24 @@ public class ChatSession implements Runnable{
     private boolean closed = false;
     private String name;
 
-
     public ChatSession(Socket socket, ChatSessionManager sessionManager) throws IOException {
         this.socket = socket;
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
         this.sessionManager = sessionManager;
         this.sessionManager.add(this);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void send(String msg) {
+        try {
+            output.writeUTF(msg);
+        } catch (IOException e) {
+            log("전송 실패" + msg);
+        }
     }
 
     @Override
@@ -45,8 +57,28 @@ public class ChatSession implements Runnable{
                 if (received.startsWith("/message|")) {
                     String[] parts = received.split("\\|", 2);
                     String tosend = parts[1];
-                    output.writeUTF(tosend);
-                    log("[" + name + "]" + tosend);
+                    String msg = "[" + name + "] " + tosend;
+                    sessionManager.broadcast(msg);
+                    log(msg);
+                }
+
+                if (received.startsWith("/change|")) {
+                    if (name == null) {
+                        log("이름없음.");
+                    }
+                    String[] parts = received.split("\\|", 2);
+                    if (parts.length == 2) {
+                        name = (parts[1].trim());
+                    }
+                }
+
+                if (received.equals("/user")) {
+                    // 전체 사용자 목록 출력
+                    List<String> sessions = sessionManager.getSessions();
+                    System.out.println("sessions = " + sessions);
+                    String users = String.join(",", sessions);
+                    log(users);
+                    output.writeUTF("/user|" + users);
                 }
 
                 if (received.equals("exit")) {

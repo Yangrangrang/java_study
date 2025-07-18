@@ -30,7 +30,18 @@ public class ChatClient {
                 try {
                     while (true) {
                         String received = input.readUTF();
-                        log("client <- server: " + received);
+
+                        if (received.startsWith("/user|")) {
+                            String users = received.substring(6);
+                            String[] userList = users.split(",");
+                            System.out.println("접속 유저 목록: ");
+                            for (String s : userList) {
+                                log("user = " + s);
+                            }
+                        } else {
+                            log(received);
+                        }
+
                         if (received.equals("exit")) break;
                     }
                 } catch (IOException e) {
@@ -55,7 +66,10 @@ public class ChatClient {
                         }
 
                         if (toSend.startsWith("/message|")) {
-                            output.writeUTF(toSend);
+                            String[] parts = toSend.split("\\|", 2);
+                            if (parts.length == 2) {
+                                output.writeUTF(toSend);
+                            }
                         }
 
                         if (toSend.startsWith("/change|")) {
@@ -64,16 +78,21 @@ public class ChatClient {
                             }
                             String[] parts = toSend.split("\\|", 2);
                             if (parts.length == 2) {
-                                output.writeUTF(parts[1].trim());
+                                output.writeUTF(toSend);
                                 name.set(parts[1].trim());
                             }
                         }
 
                         if (toSend.equals("/user")) {
                             // 전체 사용자 목록 출력
+                            output.writeUTF(toSend);
                         }
 
-                        if (toSend.equals("/exit")) break;
+                        if (toSend.equals("/exit")){
+                            output.writeUTF(toSend);
+                            break;
+                        }
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
