@@ -3,7 +3,6 @@ package was.httpserver;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +23,7 @@ public class HttpRequest {
 
     private void parseRequestLine(BufferedReader reader) throws IOException {
         String requestLine = reader.readLine();
-        if (requestLine != null) {
+        if (requestLine == null) {
             throw new IOException("EOF: No request line received");
         }
         String[] parts = requestLine.split(" ");
