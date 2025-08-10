@@ -17,7 +17,7 @@ public class BasicData {
         System.out.println("BasicData.call");
     }
 
-    public String Hello(String str) {
+    public String hello(String str) {
         System.out.println("BasicData.Hello()");
         return str + " hello";
     }
