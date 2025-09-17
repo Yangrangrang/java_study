@@ -6,7 +6,7 @@ public class ValidatorV2Main {
 
     public static void main(String[] args) {
         User user = new User("user1", 0);
-        Team team = new Team("", 0);
+        Team team = new Team("team1", 0);
 
         try {
             log("== user 검증 ==");
@@ -16,7 +16,7 @@ public class ValidatorV2Main {
         }
 
         try {
-            log("== user 검증 ==");
+            log("== team 검증 ==");
             Validator.validate(team);
         }catch (Exception e) {
             log(e);
