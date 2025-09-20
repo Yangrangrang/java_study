@@ -29,6 +29,7 @@ public class AnnotationServletV1 implements HttpServlet {
                 String value = mapping.value();
                 if (path.equals(value)) {
                     invoke(controller, method, request, response);
+                    return;
                 }
             }
         }
