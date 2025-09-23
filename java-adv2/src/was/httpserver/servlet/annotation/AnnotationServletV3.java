@@ -23,11 +23,17 @@ public class AnnotationServletV3 implements HttpServlet {
 
     private void initializePathMap(List<Object> controllers) {
         for (Object controller : controllers) {
-            Method[] methods = controller.getClass().getMethods();
+            Method[] methods = controller.getClass().getDeclaredMethods();
             for (Method method : methods) {
                 if (method.isAnnotationPresent(Mapping.class)) {
                     String path = method.getAnnotation(Mapping.class).value();
-                    // 중복 경로 체크 todo
+
+                    // 중복 경로 체크
+                    if (pathMap.containsKey(path)) {
+                        ControllerMethod controllerMethod = pathMap.get(path);
+                        throw new IllegalStateException("경로 중복 등록, path= " + path + ", method= " + method + ", 이미 등록된 메서드 = " + controllerMethod.method);
+                    }
+
                     pathMap.put(path, new ControllerMethod(controller, method));
                 }
             }
@@ -37,14 +43,13 @@ public class AnnotationServletV3 implements HttpServlet {
     @Override
     public void service(HttpRequest request, HttpResponse response) throws IOException {
         String path = request.getPath();
+
         ControllerMethod controllerMethod = pathMap.get(path);
 
         if (controllerMethod == null) {
             throw new PageNotFoundException("request= " + path);
         }
         controllerMethod.invoke(request, response);
-
-        throw new PageNotFoundException("request= " + path);
     }
 
     private static class ControllerMethod {
