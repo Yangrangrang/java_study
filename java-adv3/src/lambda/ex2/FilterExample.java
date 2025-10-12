@@ -17,12 +17,27 @@ public class FilterExample {
     }
 
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, -2, 3, 0, 5, -10, 7);
+        List<Integer> numbers = Arrays.asList(-3, -2, -1, 1, 2, 3, 5);
         System.out.println("원본 리스트: " + numbers);
 
         // 1. 음수(negative)만 뽑아 내기
+        List<Integer> negatives = filter(numbers, new MyPredicate() {
+            @Override
+            public boolean test(int value) {
+                return value < 0;
+            }
+        });
+        System.out.println("음수만 = " + negatives);
 
         // 2. 짝수(even)만 뽑아내기
-        
+        List<Integer> evens = filter(numbers, new MyPredicate() {
+
+            @Override
+            public boolean test(int value) {
+                return value % 2 == 0;
+            }
+        });
+        System.out.println("짝수만 = " + evens);
+
     }
 }
