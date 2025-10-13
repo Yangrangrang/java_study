@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FilterExample {
+public class FilterExampleEx1 {
     // 고차 함수, 함수를 인자로 받아서 조건에 맞는 요소만 뽑아내는 filter
     public static List<Integer> filter(List<Integer> list, MyPredicate predicate) {
         List<Integer> result = new ArrayList<>();
