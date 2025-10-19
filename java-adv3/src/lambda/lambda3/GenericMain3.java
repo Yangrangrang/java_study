@@ -12,11 +12,8 @@ public class GenericMain3 {
         String result1 = (String) upperCase.apply("Hello");
         System.out.println("result1 = " + result1);
 
-        ObjectFunction square = new ObjectFunction() {
-            @Override
-            public Object apply(Object n) {
-                return (Integer) n * (Integer) n;
-            }
+        ObjectFunction square = (Object n) -> {
+            return (Integer) n * (Integer) n;
         };
         Integer result2 = (Integer) square.apply(3);
         System.out.println("result2 = " + result2);
