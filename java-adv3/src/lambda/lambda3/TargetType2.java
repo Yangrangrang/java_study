@@ -10,6 +10,10 @@ public class TargetType2 {
         String result = upperCase.apply("value");
         System.out.println("result = " + result);
 
+        Function<String, String> upperCase1 = String::toUpperCase;
+        String result1 = upperCase.apply("value");
+        System.out.println("result = " + result1);
+
         Function<Integer, Integer> square = n -> n * n;
         Integer result2 = square.apply(5);
         System.out.println("result2 = " + result2);
