@@ -21,5 +21,10 @@ public class FunctionMain {
 
         Function<String, Integer> function3 = String::length;
         System.out.println("function2.apply(\"hello\") = " + function2.apply("hello"));
+
+        Function<String, Boolean> function4 = String::isEmpty;
+        System.out.println("function4.apply(\"hello\") = " + function4.apply("hello"));
+        System.out.println("function4.apply(\"\") = " + function4.apply(""));
+        
     }
 }
