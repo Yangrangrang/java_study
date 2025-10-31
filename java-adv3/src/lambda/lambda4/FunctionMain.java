@@ -18,5 +18,8 @@ public class FunctionMain {
         // 람다
         Function<String, Integer> function2 = s -> s.length();
         System.out.println("function2.apply(\"hello\") = " + function2.apply("hello"));
+
+        Function<String, Integer> function3 = String::length;
+        System.out.println("function2.apply(\"hello\") = " + function2.apply("hello"));
     }
 }
