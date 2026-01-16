@@ -25,6 +25,6 @@ public class PrimitiveFunction {
         System.out.println("intUnaryOperator.applyAsInt(1) = " + intUnaryOperator.applyAsInt(1));
 
         // 기타, IntConsumer, IntSupplier, IntPredicate
-        
+
     }
 }
