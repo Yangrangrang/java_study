@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class FilterExampleEx2 {
-    // 고차 함수, 함수를 인자로 받아서 조건에 맞는 요소만 뽑아내는 filter
     public static List<Integer> filter(List<Integer> list, Predicate<Integer> predicate) {
         List<Integer> result = new ArrayList<>();
         for (int value : list) {
