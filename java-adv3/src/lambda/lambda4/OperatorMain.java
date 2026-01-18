@@ -9,13 +9,13 @@ import java.util.function.UnaryOperator;
 public class OperatorMain {
 
     public static void main(String[] args) {
-        // UnaryOperator
+        // UnaryOperator (제네릭 하나)
         Function<Integer, Integer> square1 = x -> x * x;
         UnaryOperator<Integer> square2 = x -> x * x;
         System.out.println("square1 = " + square1.apply(10));
         System.out.println("square2 = " + square2.apply(10));
 
-        // BinaryOperator
+        // BinaryOperator (제네릭 둘)
         BiFunction<Integer, Integer, Integer> addition1 = (a, b) -> a + b;
         BinaryOperator<Integer> addition2 = (a, b) -> a + b;
         System.out.println("addition1 = " + addition1.apply(1, 2));
