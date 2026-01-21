@@ -16,4 +16,14 @@ public class GenericFilter {
         }
         return filtered;
     }
+
+    public static <T, U> U filter(List<T> list, Function<T, U> function, Predicate<T> predicate) {
+        for (T item : list) {
+            U result = function.apply(item);
+            if (result != null) {
+                return result;
+            }
+        }
+        return null;
+    }
 }
