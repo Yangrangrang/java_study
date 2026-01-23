@@ -14,6 +14,9 @@ public class FilterMain5 {
         List<String> strings = List.of("a", "bb", "ccc");
         List<String> results = GenericFilter.filter(strings, n -> n.length() >= 2);
         System.out.println("results = " + results);
+
+        List<String> results2 = GenericFilter.filter(strings, n -> n.equals("a"));
+        System.out.println("results2 = " + results2);
     }
 
 }
