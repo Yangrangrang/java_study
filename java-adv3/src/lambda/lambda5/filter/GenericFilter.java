@@ -17,6 +17,18 @@ public class GenericFilter {
         return filtered;
     }
 
+    public static <T> List<T> functionFilter(List<T> list, Function<T, Boolean> predicate) {
+        List<T> filtered = new ArrayList<>();
+        for (T item : list) {
+            Boolean apply = predicate.apply(item);
+            System.out.println("apply = " + apply);
+            if (apply) {
+                filtered.add(item);
+            }
+        }
+        return filtered;
+    }
+
     public static <T, U> U filter(List<T> list, Function<T, U> function, Predicate<T> predicate) {
         for (T item : list) {
             U result = function.apply(item);
