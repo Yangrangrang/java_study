@@ -20,6 +20,9 @@ public class FilterMain5 {
 
         List<String> results3 = GenericFilter.functionFilter(strings, n -> n.length() >= 3);
         System.out.println("results3 = " + results3);
+
+        List<String> results4 = GenericFilter.functionFilter(strings, n -> n.length() >= 4);
+        System.out.println("results4 = " + results4);
     }
 
 }
