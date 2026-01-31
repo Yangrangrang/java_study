@@ -1,5 +1,6 @@
 package lambda.lambda5.map;
 
+import java.beans.beancontext.BeanContext;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,5 +21,12 @@ public class MapMainV5 {
         List<Integer> list = List.of(1, 2, 3);
         List<String> starList = GenericMapper.map(list, n -> "*".repeat(n));
         System.out.println("starList = " + starList);
+
+        // String -> Boolean
+        List<Boolean> booleans = GenericMapper.map(fruits, s -> s.length() > 3);
+        System.out.println("booleans = " + booleans);
+
+        List<Boolean> test = GenericMapper.map(list, n -> n % 2 == 0);
+        System.out.println("test = " + test);
     }
 }
