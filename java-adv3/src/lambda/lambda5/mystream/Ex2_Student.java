@@ -31,6 +31,11 @@ public class Ex2_Student {
         return GenericMapper.map(filter, s -> s.getName());
     }
 
+    private static List<String> lambda2(List<Student> students) {
+        List<Student> filter = GenericFilter.filter(students, s -> s.getScore() >= 80);
+        return GenericMapper.map(filter, Student::getName);
+    }
+
     private static List<String> direct(List<Student> students) {
         List<String> result = new ArrayList<>();
         for (Student student : students) {
