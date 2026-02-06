@@ -30,4 +30,8 @@ public class MyStreamV1 {
         }
         return new MyStreamV1(mapped);
     }
+
+    public List<Integer> toList() {
+        return internalList;
+    }
 }
