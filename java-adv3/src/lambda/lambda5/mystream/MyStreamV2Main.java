@@ -12,8 +12,14 @@ public class MyStreamV2Main {
                 .filter(number -> number % 2 == 0)
                 .map(number -> number * 2)
                 .toList();
-        
+
         System.out.println("result = " + result);
+
+        List<Integer> result2 = MyStreamV2.of(numbers)
+                .map(n -> n * 2)
+                .toList();
+
+        System.out.println("result2 = " + result2);
     }
 
 }
