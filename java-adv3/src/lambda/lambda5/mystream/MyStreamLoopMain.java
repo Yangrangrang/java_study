@@ -22,5 +22,11 @@ public class MyStreamLoopMain {
         for (String r : result) {
             System.out.println("r = " + r);
         }
+
+        // 추가
+        MyStreamV3.of(students)
+                .filter(s -> s.getScore() >= 80)
+                .map(s -> s.getName())
+                .forEach(s -> System.out.println("name = " + s));
     }
 }
