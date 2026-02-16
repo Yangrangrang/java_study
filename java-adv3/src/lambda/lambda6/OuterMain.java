@@ -1,0 +1,30 @@
+package lambda.lambda6;
+
+public class OuterMain {
+
+    private String message = "외부 클래스";
+
+    public void execute() {
+        //1. 익명 클래스
+        Runnable anonymous = new Runnable() {
+
+            private String message = "익명 클래스";
+
+            @Override
+            public void run() {
+                // 익명 클래스의 this 는 익명클래스의 인스턴스를 가르킴.
+                System.out.println("[익명클래스] this" + this);
+                System.out.println("[익명클래스] this.getClass" + this.getClass());
+                System.out.println("[익명클래스] this.message" + this.message);
+
+            }
+        };
+        anonymous.run();
+    }
+
+    public static void main(String[] args) {
+        OuterMain outer = new OuterMain();
+        System.out.println("[외부클래스] " + outer);
+        outer.execute();
+    }
+}
