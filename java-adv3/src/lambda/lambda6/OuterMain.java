@@ -37,7 +37,7 @@ public class OuterMain {
         OuterMain outer = new OuterMain();
         System.out.println("[외부클래스] " + outer);
         System.out.println("-------------------------------");
-        
+
         outer.execute();
     }
 }
