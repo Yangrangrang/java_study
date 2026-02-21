@@ -23,8 +23,11 @@ public class MethodRefEx1 {
         // 3. 생성자 참조
         Supplier<Person> newPerson = () -> new Person("yang");
         Supplier<Person> newPerson2 = Person::new;
-        
+
         System.out.println("newPerson = " + newPerson.get());
         System.out.println("newPerson2 = " + newPerson2.get());
+
+        Supplier<String> testMethod1 = () -> Person.greetingWithName("hanna");
+        System.out.println("testMethod1 = " + testMethod1.get());
     }
 }
