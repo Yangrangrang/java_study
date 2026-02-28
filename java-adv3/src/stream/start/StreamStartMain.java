@@ -1,0 +1,31 @@
+package stream.start;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class StreamStartMain {
+
+    public static void main(String[] args) {
+        List<String> names = List.of("Apple", "Banana", "Berry");
+
+        // B 로 시작하는 이름만 필터 후 대문자로 바꿔서 리스트 수집
+        Stream<String> stream = names.stream();
+        List<String> result = stream.filter(n -> n.startsWith("B"))
+                .map(s -> s.toUpperCase())
+                .toList();
+
+        System.out.println("result = " + result);
+
+        System.out.println("===외부 반복====");
+        for (String r : result) {
+            System.out.println(r);
+        }
+
+        System.out.println("===forEach, 내부 반복===");
+        names.stream()
+                .filter(n -> n.startsWith("B"))
+                .map(s -> s.toUpperCase())
+                .forEach(System.out::println);
+    }
+}
