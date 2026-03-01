@@ -26,6 +26,13 @@ public class StreamStartMain {
         names.stream()
                 .filter(n -> n.startsWith("B"))
                 .map(s -> s.toUpperCase())
+                .forEach(s -> System.out.println(s));
+
+        System.out.println("=== 메서드 참조 ===");
+        names.stream()
+                .filter(s -> s.startsWith("B"))
+                .map(String::toUpperCase)
                 .forEach(System.out::println);
+
     }
 }
