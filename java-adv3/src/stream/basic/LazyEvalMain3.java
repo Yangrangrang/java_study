@@ -10,6 +10,7 @@ public class LazyEvalMain3 {
         List<Integer> data = List.of(1, 2, 3, 4, 5, 6);
         ex1(data);
         ex2(data);
+        ex3(data);
     }
 
     private static void ex1(List<Integer> data) {
@@ -44,6 +45,25 @@ public class LazyEvalMain3 {
                     return mapped;
                 })
                 .findFirst().get();
+        System.out.println("result = " + result);
+        System.out.println("=== Stream API 종료 ===");
+
+    }
+
+    private static void ex3(List<Integer> data) {
+        System.out.println("=== Stream API 시작 ===");
+        Boolean result = data.stream()
+                .filter(i -> {
+                    boolean isEven = i % 2 == 0;
+                    System.out.println("filter 실행:  " + i + "(" + isEven + ")");
+                    return isEven;
+                })
+                .map(i -> {
+                    int mapped = i * 10;
+                    System.out.println("map 실행:  " + i + "(" + mapped + ")");
+                    return mapped;
+                })
+                .anyMatch(i -> i == 40);
         System.out.println("result = " + result);
         System.out.println("=== Stream API 종료 ===");
 
