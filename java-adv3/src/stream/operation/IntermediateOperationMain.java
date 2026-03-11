@@ -84,6 +84,5 @@ public class IntermediateOperationMain {
                 .forEach(n -> System.out.print(n + " "));
         System.out.println("\n");
 
-        
     }
 }
