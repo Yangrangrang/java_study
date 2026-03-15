@@ -14,5 +14,12 @@ public class TerminalOperationMain {
                 .filter(n -> n % 2 == 0)
                 .collect(Collectors.toList());
         System.out.println("짝수 리스트: " + evenNumbers1);
+        System.out.println();
+
+        System.out.println("2. toList() -  JAVA 16 + ");
+        List<Integer> evenNumbers2 = numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .toList();
+        System.out.println("짝수 리스트: " + evenNumbers1);
     }
 }
