@@ -55,5 +55,49 @@ public class TerminalOperationMain {
         int sum2 = numbers.stream()
                 .reduce(100, (a, b) -> a + b);
         System.out.println("합계 (초기값 없음) = " + sum2);
+
+        System.out.println("7. min - 최소값");
+        Optional<Integer> min = numbers.stream()
+                .min(Integer::compareTo);
+        System.out.println("최소값 = " + min.get());
+        System.out.println();
+
+        System.out.println("8. max - 최소값");
+        Optional<Integer> max = numbers.stream()
+                .max(Integer::compareTo);
+        System.out.println("최소값 = " + max.get());
+        System.out.println();
+
+        System.out.println("9. findFirst - 첫번쨰 요소");
+        Optional<Integer> first = numbers.stream()
+                .filter(n -> n > 5)
+                .findFirst();
+        System.out.println("5보다 큰 첫번째 숫자 = " + first.get());
+        System.out.println();
+
+        System.out.println("10. findAny - 아무 요소나 하나 찾기 ");
+        Integer i = numbers.stream()
+                .filter(n -> n > 5)
+                .findAny().get();
+        System.out.println("5보다 큰 첫번째 숫자 = " + i);
+        System.out.println();
+
+        System.out.println("11. antMatch - 조건에 만족하는 요소 존재 여부");
+        boolean hasEven = numbers.stream()
+                .anyMatch(n -> n % 2 == 0);
+        System.out.println("짝수가 있는 지 = " + hasEven);
+        System.out.println();
+
+        System.out.println("12. allMatch - 모든 요소가 조건에 만족하는지");
+        boolean allPositive = numbers.stream()
+                .allMatch(n -> n > 0);
+        System.out.println("모든 숫자가 양수인가 = " + allPositive);
+        System.out.println();
+
+        System.out.println("13. noneMatch - 조건을 만족하는 요소가 없는지");
+        boolean noNegative = numbers.stream()
+                .noneMatch(n -> n < 0);
+        System.out.println("음수가 없는지 = " + noNegative);
+        System.out.println();
     }
 }
