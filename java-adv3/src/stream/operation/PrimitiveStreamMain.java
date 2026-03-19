@@ -1,7 +1,10 @@
 package stream.operation;
 
 import java.util.IntSummaryStatistics;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 public class PrimitiveStreamMain {
 
@@ -36,5 +39,39 @@ public class PrimitiveStreamMain {
         System.out.println("stats.getMax() = " + stats.getMax());
         System.out.println("stats.getMin() = " + stats.getMin());
         System.out.println("stats.getCount() = " + stats.getCount());
+
+        // 2. 타입 변환 메서드
+        // IntStream -> LongStream
+        LongStream longStream = IntStream.range(1, 6).asLongStream();
+        // IntStream -> DoubleStream
+        DoubleStream doubleStream = IntStream.range(1, 6).asDoubleStream();
+
+        // IntStream -> Stream<Integer>
+        Stream<Integer> boxed = IntStream.range(1, 6).boxed();
+
+        // 3. 기본형 특화 매핑
+        // int -> long 변환 매핑
+        LongStream mappedToLong = IntStream.range(1, 6)
+                .mapToLong(i -> i * 10L);
+
+        // int -> double
+        DoubleStream mappedToDouble = IntStream.range(1, 6)
+                .mapToDouble(i -> i * 1.5);
+
+        // int -> 객체 변환
+        Stream<String> mappedToObj = IntStream.range(1, 6)
+                .mapToObj(i -> "Number: " + i);
+
+        // 4. 객체 Stream -> 기본형 Stream
+        Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
+        IntStream intStream = integerStream.mapToInt(i -> i);
+
+        // 5. 객체 스트림 -> 기본형 특화 스트림으로 매핑 활용
+        int result = Stream.of(1, 2, 3, 4, 5)
+                .mapToInt(i -> i)
+                .sum();
+        System.out.println("result = " + result);
+
+        
     }
 }
