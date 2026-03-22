@@ -72,6 +72,6 @@ public class PrimitiveStreamMain {
                 .sum();
         System.out.println("result = " + result);
 
-        
+
     }
 }
