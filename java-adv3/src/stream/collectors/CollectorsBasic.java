@@ -2,6 +2,7 @@ package stream.collectors;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,6 +23,11 @@ public class CollectorsBasic {
         Set<Integer> set = Stream.of(1, 2, 3, 3, 3, 4, 2, 2, 1)
                 .collect(Collectors.toSet());
         System.out.println("set = " + set);
+
+        // 타입 지정
+        TreeSet<Integer> treeSet = Stream.of(3, 4, 5, 2, 1)
+                .collect(Collectors.toCollection(TreeSet::new));
+        System.out.println("treeSet = " + treeSet); // TreeSet 정렬 상태 유지
 
 
     }
